@@ -3,41 +3,50 @@ package model;
 import java.sql.Date;
 
 public class Bill {
-	private int Id;
-	private int ProductQuantity;
-	private double ProductPrice;
+	private int id;
+	private int productQuantity;
+	private double productPrice;
 	private Product product;
-	private Date BuyTime;
+	private Date buyTime;
+
 	public int getId() {
-		return Id;
+		return id;
 	}
-	public void setId(int id) {
-		Id = id;
+
+	public void setId(int productId) {
+		id = productId;
 	}
+
 	public int getProductQuantity() {
-		return ProductQuantity;
+		return productQuantity;
 	}
-	public void setProductQuantity(int productQuantity) {
-		ProductQuantity = productQuantity;
+
+	public void setProductQuantity(int quantity) {
+		productQuantity = quantity;
 	}
+
 	public double getProductPrice() {
-		return ProductPrice;
+		return productPrice;
 	}
-	public void setProductPrice(double productPrice) {
-		ProductPrice = productPrice;
+
+	public void setProductPrice(double price) {
+		productPrice = price;
 	}
+
 	public Product getProduct() {
 		return product;
 	}
+
 	public void setProduct(Product buyProduct) {
-		product=buyProduct;
+		product = buyProduct;
 	}
+
 	public Date getBuyTime() {
-		return BuyTime;
+		return buyTime;
 	}
+
 	public void setBuyTime(Date date) {
-		BuyTime = date;
+		buyTime = date;
 	}
-	
-	
+
 }

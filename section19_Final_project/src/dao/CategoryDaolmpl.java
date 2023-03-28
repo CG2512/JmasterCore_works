@@ -12,57 +12,57 @@ public class CategoryDaolmpl implements CategoryDao {
 
 	@Override
 	public Category read(int productId) {
-		Category category=new Category();
-		Connection conn=JDBC_Connection.getJDBCConnection();
-		String sql="SELECT * FROM category WHERE id=?";
+		Category category = new Category();
+		Connection conn = JDBC_Connection.getJDBCConnection();
+		String sql = "SELECT * FROM category WHERE id=?";
 		try {
-			PreparedStatement statement=conn.prepareStatement(sql);
+			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setInt(1, productId);
-			ResultSet rs=statement.executeQuery();
-			
+			ResultSet rs = statement.executeQuery();
+
 			while (rs.next()) {
-				
+
 				category.setId(rs.getInt("Id"));
 				category.setName(rs.getString("Category_Name"));
 			}
 			return category;
-		
+
 		} catch (SQLIntegrityConstraintViolationException e2) {
 			return null;
-		
-		} catch (SQLException e) {
-		// TODO Auto-generated catch block
-			e.printStackTrace();
-		return null;
-	}
 
-}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 
 	@Override
-	public Category SearchByName(String name) {
+	public Category searchByName(String name) {
 		// TODO Auto-generated method stub
-		Category category=new Category();
-		Connection conn=JDBC_Connection.getJDBCConnection();
-		String sql="SELECT * FROM category WHERE category_Name=?";
+		Category category = new Category();
+		Connection conn = JDBC_Connection.getJDBCConnection();
+		String sql = "SELECT * FROM category WHERE category_Name=?";
 		try {
-			PreparedStatement statement=conn.prepareStatement(sql);
+			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setString(1, name);
-			ResultSet rs=statement.executeQuery();
-			
+			ResultSet rs = statement.executeQuery();
+
 			while (rs.next()) {
-				
+
 				category.setId(rs.getInt("Id"));
 				category.setName(rs.getString("Category_Name"));
 			}
 			return category;
-		
+
 		} catch (SQLIntegrityConstraintViolationException e2) {
 			return null;
-		
+
 		} catch (SQLException e) {
-		// TODO Auto-generated catch block
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		return null;
-	}
+			return null;
+		}
 	}
 }

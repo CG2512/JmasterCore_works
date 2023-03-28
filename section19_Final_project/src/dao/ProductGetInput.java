@@ -9,156 +9,158 @@ import model.Product;
 
 //Specialize class for getting input and exception handling 
 public class ProductGetInput {
-	public Category GetCategoryID() {
-		Scanner sc1=new Scanner(System.in);
-		CategoryDao categoryDaolmpl=new CategoryDaolmpl();
+	public Category getCategoryID() {
+		Scanner sc1 = new Scanner(System.in);
+		CategoryDao categoryDaolmpl = new CategoryDaolmpl();
 		while (true) {
-		System.out.println("Category ID: ");
-		Category category=categoryDaolmpl.read(sc1.nextInt());
-		if (category.getName() != null) {
-			return category;			
-		}
-		else {
-			System.out.println("Category does not exist, please try again");
-			continue;
-		}
+			System.out.println("Category ID: ");
+			Category category = categoryDaolmpl.read(sc1.nextInt());
+			if (category.getName() != null) {
+				return category;
+			} else {
+				System.out.println("Category does not exist, please try again");
+				continue;
+			}
 		}
 	}
-	public Category GetCategoryByName() {
-		Scanner sc8=new Scanner(System.in);
-		CategoryDao categoryDaolmpl=new CategoryDaolmpl();
+
+	public Category getCategoryByName() {
+		Scanner sc8 = new Scanner(System.in);
+		CategoryDao categoryDaolmpl = new CategoryDaolmpl();
 		while (true) {
-		System.out.println("Category name: ");
-		Category category=categoryDaolmpl.SearchByName(sc8.nextLine());
-		if (category.getName() != null) {
-			return category;			
-		}
-		else {
-			System.out.println("Category does not exist, please try again");
-			continue;
-		}
+			System.out.println("Category name: ");
+			Category category = categoryDaolmpl.searchByName(sc8.nextLine());
+			if (category.getName() != null) {
+				return category;
+			} else {
+				System.out.println("Category does not exist, please try again");
+				continue;
+			}
 		}
 	}
-	public Category GetCategoryInfo() {
-		Scanner sc9=new Scanner(System.in);
-		Category category=new Category();
-		CategoryDao categoryDaolmpl=new CategoryDaolmpl();
+
+	public Category getCategoryInfo() {
+		Scanner sc9 = new Scanner(System.in);
+		Category category = new Category();
+		CategoryDao categoryDaolmpl = new CategoryDaolmpl();
 		while (true) {
 			try {
-			System.out.println("1.By Name");
-			System.out.println("2.By ID");
-			System.out.println("Category search by type: ");
-			int choice= sc9.nextInt();
-			if (choice ==1) {category=GetCategoryByName();}
-			else if (choice==2) {category=GetCategoryID();}
-			else {
-				System.out.println("Pick 1 or 2");
+				System.out.println("1.By Name");
+				System.out.println("2.By ID");
+				System.out.println("Category search by type: ");
+				int choice = sc9.nextInt();
+				if (choice == 1) {
+					category = getCategoryByName();
+				} else if (choice == 2) {
+					category = getCategoryID();
+				} else {
+					System.out.println("Pick 1 or 2");
+					continue;
+				}
+				return category;
+			} catch (InputMismatchException i) {
+				System.out.println("Wrong input,try again");
 				continue;
 			}
-			return category;
-		}catch (InputMismatchException i) {
-			System.out.println("Wrong input,try again");
-			continue;
-		}
 		}
 	}
-	
 
-	public int GetProductID() {
-		Scanner sc2=new Scanner(System.in);
+	public int getProductID() {
+		Scanner sc2 = new Scanner(System.in);
 		while (true) {
-			try {System.out.println("Product ID: ");
-			int ProductId=sc2.nextInt();
-			return ProductId;
-		}catch (InputMismatchException i) {
-			System.out.println("Wrong input, please try again");
-			continue;
-		}		
+			try {
+				System.out.println("Product ID: ");
+				int productId = sc2.nextInt();
+				return productId;
+			} catch (InputMismatchException i) {
+				System.out.println("Wrong input, please try again");
+				continue;
+			}
+		}
 	}
-	}
-	
-	
-	
-	public Product GetProductInfo() {
-		Product product=new Product();
-		product.setName(GetProductName());
-		product.setQuantity(GetQuantity());
-		product.setPrice(GetPrice());
-		product.setProductCategory(GetCategoryID());
+
+	public Product getProductInfo() {
+		Product product = new Product();
+		product.setName(getProductName());
+		product.setQuantity(getQuantity());
+		product.setPrice(getPrice());
+		product.setProductCategory(getCategoryID());
 		return product;
-		}	
-		
-	public String GetProductName() {
-		
+	}
+
+	public String getProductName() {
+
 		while (true) {
-			Scanner sc3=new Scanner(System.in);
+			Scanner sc3 = new Scanner(System.in);
 			System.out.println("Product name:");
-			String name=sc3.nextLine();
-			if (name.length()<1) {
+			String name = sc3.nextLine();
+			if (name.length() < 1) {
 				System.out.print("Name must not be empty");
 				continue;
-			}
-			else if(name.matches("[0-9]+")){
+			} else if (name.matches("[0-9]+")) {
 				System.out.print("Name must not contains only number");
 				continue;
 			}
-			return name;			
+			return name;
 		}
 	}
-	private int GetQuantity() {
-		
+
+	private int getQuantity() {
+
 		while (true) {
 			try {
-				Scanner sc4=new Scanner(System.in);
+				Scanner sc4 = new Scanner(System.in);
 				System.out.println("Quantity:");
-				int quantity=sc4.nextInt();
+				int quantity = sc4.nextInt();
 				return quantity;
-				}catch (InputMismatchException i1) {
-					System.out.println("Wrong input type for quantity, please try again");
-					continue;
-				}
+			} catch (InputMismatchException i1) {
+				System.out.println("Wrong input type for quantity, please try again");
+				continue;
+			}
 		}
 	}
-	private double GetPrice() {
-		
+
+	private double getPrice() {
+
 		while (true) {
 			try {
-				Scanner sc5=new Scanner(System.in);
+				Scanner sc5 = new Scanner(System.in);
 				System.out.println("Price:");
-				double price= sc5.nextDouble();
+				double price = sc5.nextDouble();
 				return price;
-				}catch (InputMismatchException i1) {
-					System.out.println("Wrong input type for price , please try again");
-					continue;
-				}
+			} catch (InputMismatchException i1) {
+				System.out.println("Wrong input type for price , please try again");
+				continue;
+			}
 		}
 	}
-	public Double[] GetPriceRange(){
-		double MinimumPrice;
-		double MaximumPrice;
+
+	public Double[] getPriceRange() {
+		double minimumPrice;
+		double maximumPrice;
 		while (true) {
 			try {
-				Scanner sc6=new Scanner(System.in);
+				Scanner sc6 = new Scanner(System.in);
 				System.out.println("Minimum Price:");
-				MinimumPrice=sc6.nextDouble();
+				minimumPrice = sc6.nextDouble();
 				break;
-				}catch (InputMismatchException i1) {
-					System.out.println("Wrong input type for price , please try again");
-					continue;
-				}
+			} catch (InputMismatchException i1) {
+				System.out.println("Wrong input type for price , please try again");
+				continue;
+			}
 		}
 		while (true) {
 			try {
-				Scanner sc7=new Scanner(System.in);
+				Scanner sc7 = new Scanner(System.in);
 				System.out.println("Maximum Price:");
-				MaximumPrice= sc7.nextDouble();
+				maximumPrice = sc7.nextDouble();
 				break;
-				}catch (InputMismatchException i2) {
-					System.out.println("Wrong input type for price , please try again");
-					continue;
-				}	
-		} 
-		Double[] PriceRange= {MinimumPrice,MaximumPrice};
+			} catch (InputMismatchException i2) {
+				System.out.println("Wrong input type for price , please try again");
+				continue;
+			}
+		}
+		Double[] PriceRange = { minimumPrice, maximumPrice };
 		return PriceRange;
 	}
 }

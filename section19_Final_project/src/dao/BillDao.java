@@ -7,9 +7,12 @@ import model.Bill;
 
 public interface BillDao {
 	void insert(Bill bill);
+
 	void update(Bill bill);
+
 	void delete(Bill bill);
+
 	Bill get(int billId);
-	
-	List<Bill> searchByDate(Date startDate,Date endDate);
+
+	List<Bill> searchByDate(Date startDate, Date endDate);
 }

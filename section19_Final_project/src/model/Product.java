@@ -1,40 +1,50 @@
 package model;
 
 public class Product {
-	private int Id;
-	private String Name;
-	private int Quantity;
-	private double Price;
-	private Category ProductCategory;
+	private int id;
+	private String name;
+	private int quantity;
+	private double price;
+	private Category productCategory;
+
 	public int getId() {
-		return Id;
+		return id;
 	}
-	public void setId(int id) {
-		Id = id;
+
+	public void setId(int productId) {
+		id = productId;
 	}
+
 	public String getName() {
-		return Name;
+		return name;
 	}
-	public void setName(String name) {
-		Name = name;
+
+	public void setName(String productName) {
+		name = productName;
 	}
+
 	public int getQuantity() {
-		return Quantity;
+		return quantity;
 	}
-	public void setQuantity(int quantity) {
-		Quantity = quantity;
+
+	public void setQuantity(int productQuantity) {
+		quantity = productQuantity;
 	}
+
 	public double getPrice() {
-		return Price;
+		return price;
 	}
-	public void setPrice(double price) {
-		Price = price;
+
+	public void setPrice(double productPrice) {
+		price = productPrice;
 	}
+
 	public Category getProductCategory() {
-		return ProductCategory;
+		return productCategory;
 	}
-	public void setProductCategory(Category productCategory) {
-		ProductCategory = productCategory;
+
+	public void setProductCategory(Category category) {
+		productCategory = category;
 	}
-	
+
 }
